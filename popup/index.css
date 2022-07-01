@@ -1,7 +1,10 @@
 :root {
   --primary-color: #fb7299;
+  --secondary-color: #f6f7f8;
   --primary-btn-hover-color: #ff6196;
   --primary-btn-active-color: #f14e85;
+  --secondary-btn-hover-color: #eeeff1;
+  --secondary-btn-active-color: #e0e2e4;
 }
 
 .wrapper {
@@ -17,26 +20,50 @@
   border-radius: 4px;
 }
 
-.up-btn {
-  width: 100%;
+.btn-wrapper {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.basic-btn {
+  padding: 0 24px;
   height: 40px;
   border-radius: 4px;
-  background-color: var(--primary-color);
-  color: #fff;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
   border: none;
   outline: none;
-  box-shadow: 0 4px 4px rgb(255 112 159 / 30%);
+  transition: background-color 0.2s ease-in-out;
 }
 
-.up-btn:hover {
+.preview-btn {
+  color: #fff;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 4px #ff709f4d;
+}
+
+.preview-btn:hover {
   background-color: var(--primary-btn-hover-color);
 }
 
-.up-btn:active {
+.preview-btn:active {
   background-color: var(--primary-btn-active-color);
+}
+
+.up-btn {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 4px #00000014;
+}
+
+.up-btn:hover {
+  background-color: var(--secondary-btn-hover-color);
+}
+
+.up-btn:active {
+  background-color: var(--secondary-btn-active-color);
 }

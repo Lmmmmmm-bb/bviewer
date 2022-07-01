@@ -1,48 +1,70 @@
 import { FC, useState } from 'react';
-import type { IBVideoInfoQuery } from '~types';
-import { B_API_VIDEO_INFO, matchBvidReg } from './config';
+import type { IBUpInfoQuery, IBVideoInfoQuery } from '~types';
+import {
+  B_API_UP_INFO,
+  B_API_VIDEO_INFO,
+  FetchType,
+  matchBvidReg,
+  matchUidReg
+} from './config';
+import { biliParser, queryCurrentTab } from './utils';
 import './index.css';
-import { concatUrlQuery } from './utils';
 
 const Popup: FC = () => {
-  const [previewSrc, setPreviewSrc] = useState('');
+  const [imageSrc, setImageSrc] = useState('');
 
-  const fetchVideoInfo = async (bvid: string) => {
-    const url = concatUrlQuery<IBVideoInfoQuery>(B_API_VIDEO_INFO, { bvid });
-    const response = await fetch(url);
-    const { data } = await response.json();
+  const handleFetch = async (type: FetchType) => {
+    if (imageSrc) return;
 
-    setPreviewSrc(data.pic);
-  };
+    let fetchSrc = '';
+    const current = await queryCurrentTab();
 
-  const handleClick = async () => {
-    const [current] = await chrome.tabs.query({
-      active: true,
-      currentWindow: true
-    });
-
-    const match = current.url.match(matchBvidReg);
-    if (match.groups) {
-      const { bvid } = match.groups;
-      !previewSrc && fetchVideoInfo(bvid);
+    if (type === 'preview') {
+      const match = current.url.match(matchBvidReg);
+      if (match && match.groups) {
+        const { bvid } = match.groups;
+        fetchSrc = await biliParser<IBVideoInfoQuery>(
+          B_API_VIDEO_INFO,
+          { bvid },
+          'pic'
+        );
+      }
+    } else if (type === 'cover') {
+      const match = current.url.match(matchUidReg);
+      if (match && match.groups) {
+        const { uid } = match.groups;
+        fetchSrc = await biliParser<IBUpInfoQuery>(
+          B_API_UP_INFO,
+          { mid: uid },
+          'top_photo'
+        );
+      }
     }
+
+    setImageSrc(fetchSrc);
   };
 
   return (
     <div className='wrapper'>
-      {previewSrc && (
-        <a
-          style={{ marginBottom: 16 }}
-          target='_blank'
-          title='download preview'
-          href={previewSrc}
-        >
-          <img className='preview' src={previewSrc} alt='video preview' />
+      {imageSrc && (
+        <a target='_blank' title='查看原图' href={imageSrc}>
+          <img className='preview' src={imageSrc} alt='封面背景图片' />
         </a>
       )}
-      <button className='up-btn' onClick={handleClick}>
-        获取当前视频封面
-      </button>
+      <div className='btn-wrapper'>
+        <button
+          className='basic-btn up-btn'
+          onClick={() => handleFetch('cover')}
+        >
+          获取当前 UP 背景
+        </button>
+        <button
+          className='basic-btn preview-btn'
+          onClick={() => handleFetch('preview')}
+        >
+          获取当前视频封面
+        </button>
+      </div>
     </div>
   );
 };
