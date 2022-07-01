@@ -47,7 +47,12 @@ const Popup: FC = () => {
   return (
     <div className='wrapper'>
       {imageSrc && (
-        <a target='_blank' title='查看原图' href={imageSrc}>
+        <a
+          target='_blank'
+          title='查看原图'
+          href={imageSrc}
+          rel='noopener noreferrer'
+        >
           <img className='preview' src={imageSrc} alt='封面背景图片' />
         </a>
       )}
