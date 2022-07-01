@@ -11,6 +11,7 @@ const Popup: FC = () => {
     const url = concatUrlQuery<IBVideoInfoQuery>(B_API_VIDEO_INFO, { bvid });
     const response = await fetch(url);
     const { data } = await response.json();
+
     setPreviewSrc(data.pic);
   };
 
@@ -20,9 +21,9 @@ const Popup: FC = () => {
       currentWindow: true
     });
 
-    const { groups } = current.url.match(matchBvidReg);
-    if (groups) {
-      const { bvid } = groups;
+    const match = current.url.match(matchBvidReg);
+    if (match.groups) {
+      const { bvid } = match.groups;
       !previewSrc && fetchVideoInfo(bvid);
     }
   };
