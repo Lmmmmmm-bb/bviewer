@@ -2,7 +2,7 @@
   "name": "bviewer",
   "displayName": "Bviewer",
   "version": "0.0.1",
-  "description": "用于查看 Bilibili 视频封面的 Chrome 扩展程序",
+  "description": "用于查看 Bilibili 视频封面和 UP 主页背景的 Chrome 扩展程序",
   "packageManager": "pnpm@7.4.1",
   "author": "_lmmmmmm",
   "license": "MIT",
