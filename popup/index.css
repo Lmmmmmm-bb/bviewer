@@ -1,0 +1,42 @@
+:root {
+  --primary-color: #fb7299;
+  --primary-btn-hover-color: #ff6196;
+  --primary-btn-active-color: #f14e85;
+}
+
+.wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  user-select: none;
+}
+
+.preview {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.up-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 4px rgb(255 112 159 / 30%);
+}
+
+.up-btn:hover {
+  background-color: var(--primary-btn-hover-color);
+}
+
+.up-btn:active {
+  background-color: var(--primary-btn-active-color);
+}
