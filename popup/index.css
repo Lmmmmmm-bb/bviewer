@@ -25,11 +25,11 @@
   color: #fff;
   font-weight: 600;
   font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   border: none;
+  outline: none;
   box-shadow: 0 4px 4px rgb(255 112 159 / 30%);
 }
 

@@ -2,13 +2,24 @@
   "name": "bviewer",
   "displayName": "Bviewer",
   "version": "0.0.1",
-  "description": "Bilibili cover viewer, power by Plasmo.",
+  "description": "用于查看 Bilibili 视频封面的 Chrome 扩展程序",
   "packageManager": "pnpm@7.4.1",
   "author": "_lmmmmmm",
   "license": "MIT",
+  "keywords": [
+    "chrome-extension",
+    "react",
+    "bilibili",
+    "plasmo"
+  ],
+  "homepage": "https://github.com/Lmmmmmm-bb/BViewer",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lmmmmmm-bb/BViewer"
+  },
+  "bugs": {
+    "email": "lmmmmmm12138@gmail.com",
+    "url": "https://github.com/Lmmmmmm-bb/BViewer/issues"
   },
   "scripts": {
     "dev": "plasmo dev",

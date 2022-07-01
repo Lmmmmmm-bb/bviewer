@@ -41,7 +41,7 @@ const Popup: FC = () => {
         </a>
       )}
       <button className='up-btn' onClick={handleClick}>
-        Video Preview
+        获取当前视频封面
       </button>
     </div>
   );
