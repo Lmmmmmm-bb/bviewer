@@ -1,0 +1,13 @@
+.preview-btn {
+  color: #fff;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 4px #ff709f4d;
+}
+
+.preview-btn:hover {
+  background-color: var(--primary-btn-hover-color);
+}
+
+.preview-btn:active {
+  background-color: var(--primary-btn-active-color);
+}

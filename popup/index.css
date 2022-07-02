@@ -39,31 +39,3 @@
   outline: none;
   transition: background-color 0.2s ease-in-out;
 }
-
-.preview-btn {
-  color: #fff;
-  background-color: var(--primary-color);
-  box-shadow: 0 4px 4px #ff709f4d;
-}
-
-.preview-btn:hover {
-  background-color: var(--primary-btn-hover-color);
-}
-
-.preview-btn:active {
-  background-color: var(--primary-btn-active-color);
-}
-
-.up-btn {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
-  box-shadow: 0 4px 4px #00000014;
-}
-
-.up-btn:hover {
-  background-color: var(--secondary-btn-hover-color);
-}
-
-.up-btn:active {
-  background-color: var(--secondary-btn-active-color);
-}

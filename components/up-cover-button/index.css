@@ -1,0 +1,13 @@
+.up-btn {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 4px #00000014;
+}
+
+.up-btn:hover {
+  background-color: var(--secondary-btn-hover-color);
+}
+
+.up-btn:active {
+  background-color: var(--secondary-btn-active-color);
+}
