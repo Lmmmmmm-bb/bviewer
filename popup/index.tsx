@@ -1,14 +1,10 @@
 import { FC, useState } from 'react';
-import type { IBUpInfoQuery, IBVideoInfoQuery } from '~types';
-import {
-  B_API_UP_INFO,
-  B_API_VIDEO_INFO,
-  FetchType,
-  matchBvidReg,
-  matchUidReg
-} from './config';
-import { biliParser, queryCurrentTab } from './utils';
+import { FetchType, matchBvidReg, matchUidReg } from './config';
+import { queryCurrentTab } from './utils';
 import './index.css';
+import UpCoverButton from '~components/up-cover-button';
+import PreviewButton from '~components/preview-button';
+import { fetchBUpInfo, fetchBVideoInfo } from './fetch';
 
 const Popup: FC = () => {
   const [imageSrc, setImageSrc] = useState('');
@@ -23,21 +19,13 @@ const Popup: FC = () => {
       const match = current.url.match(matchBvidReg);
       if (match && match.groups) {
         const { bvid } = match.groups;
-        fetchSrc = await biliParser<IBVideoInfoQuery>(
-          B_API_VIDEO_INFO,
-          { bvid },
-          'pic'
-        );
+        fetchSrc = await fetchBVideoInfo(bvid);
       }
     } else if (type === 'cover') {
       const match = current.url.match(matchUidReg);
       if (match && match.groups) {
         const { uid } = match.groups;
-        fetchSrc = await biliParser<IBUpInfoQuery>(
-          B_API_UP_INFO,
-          { mid: uid },
-          'top_photo'
-        );
+        fetchSrc = await fetchBUpInfo(uid);
       }
     }
 
@@ -57,18 +45,8 @@ const Popup: FC = () => {
         </a>
       )}
       <div className='btn-wrapper'>
-        <button
-          className='basic-btn up-btn'
-          onClick={() => handleFetch('cover')}
-        >
-          获取当前 UP 背景
-        </button>
-        <button
-          className='basic-btn preview-btn'
-          onClick={() => handleFetch('preview')}
-        >
-          获取当前视频封面
-        </button>
+        <UpCoverButton onClick={() => handleFetch('cover')} />
+        <PreviewButton onClick={() => handleFetch('preview')} />
       </div>
     </div>
   );
