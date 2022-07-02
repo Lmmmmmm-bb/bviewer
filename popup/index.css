@@ -28,6 +28,7 @@
 }
 
 .basic-btn {
+  width: 100%;
   padding: 0 24px;
   height: 40px;
   border-radius: 4px;
