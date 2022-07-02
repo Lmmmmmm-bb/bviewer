@@ -1,0 +1,25 @@
+.preview {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.btn-wrapper {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.basic-btn {
+  width: 100%;
+  padding: 0 24px;
+  height: 40px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s ease-in-out;
+}
