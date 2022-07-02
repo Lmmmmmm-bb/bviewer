@@ -1,6 +1,6 @@
 import { useStorage } from '@plasmohq/storage';
 import { FC, KeyboardEvent, useRef } from 'react';
-import UpAvatar from '~components/up-avatar.ts';
+import UpAvatar from '~components/up-avatar';
 import type { IUpInfo } from '~types/space-video';
 import { uniqByKey } from '~utils';
 import { FOLLOW_X_KEY } from './config';
