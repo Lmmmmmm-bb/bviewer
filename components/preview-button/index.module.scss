@@ -1,0 +1,13 @@
+@use '../../popup/variables' as v;
+
+.previewBtn {
+  color: #fff;
+  background-color: v.$primary-color;
+  box-shadow: 0 4px 4px #ff709f4d;
+  &:hover {
+    background-color: v.$primary-btn-hover-color;
+  }
+  &:active {
+    background-color: v.$primary-btn-active-color;
+  }
+}

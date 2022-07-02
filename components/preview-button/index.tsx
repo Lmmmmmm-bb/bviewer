@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import './index.css';
+import styles from './index.module.scss';
 
 interface IPreviewButtonProps {
   onClick: () => void;
@@ -7,7 +7,7 @@ interface IPreviewButtonProps {
 
 const PreviewButton: FC<IPreviewButtonProps> = (props) => {
   return (
-    <button className='basic-btn preview-btn' {...props}>
+    <button className={`basic-btn ${styles.previewBtn}`} {...props}>
       获取当前视频封面
     </button>
   );

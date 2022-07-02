@@ -1,0 +1,65 @@
+@use '../../popup/variables' as v;
+
+.wrapper {
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #f5f5f5;
+    .innerWrapper {
+      .upName {
+        color: v.$primary-color;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .remove {
+      opacity: 1;
+    }
+  }
+
+  .innerWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    .avatar {
+      margin-right: 8px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid #e5e5e5 {
+        radius: 50%;
+      }
+      transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    }
+    .upName {
+      font: {
+        size: 14px;
+        weight: 600;
+      }
+      color: v.$secondary-text-color;
+      letter-spacing: 0.4px;
+      transition: color 0.2s ease-in-out;
+    }
+  }
+
+  .remove {
+    padding: 4px 12px;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    background-color: v.$secondary-btn-hover-color;
+    opacity: 0;
+    font-weight: 400;
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: v.$secondary-btn-active-color;
+    }
+  }
+}

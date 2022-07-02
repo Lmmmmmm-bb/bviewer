@@ -6,7 +6,7 @@ import type { FetchType } from '~types';
 import { queryCurrentTab } from '~utils';
 import { matchBvidReg, matchUidReg } from './config';
 import { fetchBUpBackgroundInfo, fetchBVideoInfo } from './fetch';
-import './index.css';
+import styles from './index.module.scss';
 
 const BiliBili: FC = () => {
   const fetchType = useFetchType();
@@ -30,7 +30,7 @@ const BiliBili: FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       {imageSrc && (
         <a
           target='_blank'
@@ -38,10 +38,10 @@ const BiliBili: FC = () => {
           href={imageSrc}
           rel='noopener noreferrer'
         >
-          <img className='preview' src={imageSrc} alt='封面背景图片' />
+          <img className={styles.preview} src={imageSrc} alt='封面背景图片' />
         </a>
       )}
-      <div className='btn-wrapper'>
+      <div className={styles.btnWrapper}>
         {fetchType === 'cover' ? (
           <UpCoverButton onClick={() => handleFetch('cover')} />
         ) : fetchType === 'preview' ? (
@@ -50,7 +50,7 @@ const BiliBili: FC = () => {
           <button className='basic-btn'>插件不可用</button>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
