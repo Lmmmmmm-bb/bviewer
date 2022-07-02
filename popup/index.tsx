@@ -5,8 +5,10 @@ import './index.css';
 import UpCoverButton from '~components/up-cover-button';
 import PreviewButton from '~components/preview-button';
 import { fetchBUpInfo, fetchBVideoInfo } from './fetch';
+import { useFetchType } from '~hooks';
 
 const Popup: FC = () => {
+  const fetchType = useFetchType();
   const [imageSrc, setImageSrc] = useState('');
 
   const handleFetch = async (type: FetchType) => {
@@ -17,16 +19,10 @@ const Popup: FC = () => {
 
     if (type === 'preview') {
       const match = current.url.match(matchBvidReg);
-      if (match && match.groups) {
-        const { bvid } = match.groups;
-        fetchSrc = await fetchBVideoInfo(bvid);
-      }
+      fetchSrc = await fetchBVideoInfo(match.groups.bvid);
     } else if (type === 'cover') {
       const match = current.url.match(matchUidReg);
-      if (match && match.groups) {
-        const { uid } = match.groups;
-        fetchSrc = await fetchBUpInfo(uid);
-      }
+      fetchSrc = await fetchBUpInfo(match.groups.uid);
     }
 
     setImageSrc(fetchSrc);
@@ -45,8 +41,13 @@ const Popup: FC = () => {
         </a>
       )}
       <div className='btn-wrapper'>
-        <UpCoverButton onClick={() => handleFetch('cover')} />
-        <PreviewButton onClick={() => handleFetch('preview')} />
+        {fetchType === 'cover' ? (
+          <UpCoverButton onClick={() => handleFetch('cover')} />
+        ) : fetchType === 'preview' ? (
+          <PreviewButton onClick={() => handleFetch('preview')} />
+        ) : (
+          <button className='basic-btn'>插件不可用</button>
+        )}
       </div>
     </div>
   );
