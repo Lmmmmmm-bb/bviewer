@@ -1,6 +1,8 @@
 import { useStorage } from '@plasmohq/storage';
 import { FC, KeyboardEvent, useRef } from 'react';
 import UpAvatar from '~components/up-avatar';
+import { useFetchType } from '~hooks';
+import BiliBili from '~components/bilibili';
 import type { IUpInfo } from '~types/space-video';
 import { uniqByKey } from '~utils';
 import { FOLLOW_X_KEY } from './config';
@@ -13,6 +15,7 @@ const Follow: FC = () => {
     FOLLOW_X_KEY,
     (v) => v || []
   );
+  const fetchType = useFetchType();
 
   const handleFollowUp = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -27,6 +30,7 @@ const Follow: FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {fetchType !== 'unusable' && <BiliBili />}
       <input
         ref={inputRef}
         className={styles.uidInput}

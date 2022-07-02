@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { matchBvidReg, matchUidReg } from '~layouts/bilibili/config';
+import { matchBvidReg, matchUidReg } from '~components/bilibili/config';
 import type { FetchType } from '~types';
 import { queryCurrentTab } from '~utils';
 

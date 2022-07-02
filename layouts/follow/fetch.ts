@@ -1,4 +1,4 @@
-import { B_API_UP_INFO } from '~layouts/bilibili/config';
+import { B_API_UP_INFO } from '~components/bilibili/config';
 import type { IBSpaceQuery, IBUpInfoQuery } from '~types';
 import type { IUpInfo } from '~types/space-video';
 import { biliParser } from '~utils';
