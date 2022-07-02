@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { FetchType, matchBvidReg, matchUidReg } from '~popup/config';
-import { queryCurrentTab } from '~popup/utils';
+import { matchBvidReg, matchUidReg } from '~layouts/bilibili/config';
+import type { FetchType } from '~types';
+import { queryCurrentTab } from '~utils';
 
 export const useFetchType = () => {
   const [fetchType, setFetchType] = useState<FetchType>('unusable');

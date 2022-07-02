@@ -16,11 +16,6 @@ export async function queryCurrentTab() {
   return current;
 }
 
-export async function fetchGet(url: string) {
-  const response = await fetch(url);
-  return response.json();
-}
-
 export async function biliParser<T = Record<string, string>>(
   origin: string,
   query: T,
@@ -30,4 +25,9 @@ export async function biliParser<T = Record<string, string>>(
   const { data } = await fetchGet(url);
 
   return field ? data[field] : data;
+}
+
+export async function fetchGet(url: string) {
+  const response = await fetch(url);
+  return response.json();
 }
