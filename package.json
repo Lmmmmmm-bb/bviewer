@@ -27,6 +27,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@plasmohq/storage": "^0.6.2",
     "plasmo": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"

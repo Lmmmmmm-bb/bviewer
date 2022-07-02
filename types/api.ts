@@ -5,3 +5,8 @@ export interface IBVideoInfoQuery {
 export interface IBUpInfoQuery {
   mid: string;
 }
+
+export interface IBSpaceQuery {
+  mid: string;
+  ps: string;
+}

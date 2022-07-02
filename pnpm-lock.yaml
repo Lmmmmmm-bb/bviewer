@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
+  '@plasmohq/storage': ^0.6.2
   '@trivago/prettier-plugin-sort-imports': 3.2.0
   '@types/chrome': 0.0.190
   '@types/node': 17.0.43
@@ -17,7 +18,8 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  plasmo: registry.npmmirror.com/plasmo/0.44.0
+  '@plasmohq/storage': registry.npmmirror.com/@plasmohq/storage/0.6.2_react@18.2.0
+  plasmo: registry.npmmirror.com/plasmo/0.45.1
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
 
@@ -2033,6 +2035,17 @@ packages:
       - '@parcel/core'
     dev: false
 
+  registry.npmmirror.com/@plasmohq/storage/0.6.2_react@18.2.0:
+    resolution: {integrity: sha512-9Usqjd32Jw3PGEoCJ40don1pbWk9iYG/xJk5byP6lgnklYOKCGsxayI2QSqoLX4tLkwD0AZ8vt+UZCv0/IvxbQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@plasmohq/storage/-/storage-0.6.2.tgz}
+    id: registry.npmmirror.com/@plasmohq/storage/0.6.2
+    name: '@plasmohq/storage'
+    version: 0.6.2
+    peerDependencies:
+      react: ^16.8.6 || ^17 || ^18
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+    dev: false
+
   registry.npmmirror.com/@sindresorhus/is/4.6.0:
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@sindresorhus/is/-/is-4.6.0.tgz}
     name: '@sindresorhus/is'
@@ -3501,6 +3514,18 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       type-fest: registry.npmmirror.com/type-fest/0.20.2
+    dev: false
+
+  registry.npmmirror.com/globalyzer/0.1.0:
+    resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/globalyzer/-/globalyzer-0.1.0.tgz}
+    name: globalyzer
+    version: 0.1.0
+    dev: false
+
+  registry.npmmirror.com/globrex/0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/globrex/-/globrex-0.1.2.tgz}
+    name: globrex
+    version: 0.1.2
     dev: false
 
   registry.npmmirror.com/got/12.1.0:
@@ -4995,10 +5020,10 @@ packages:
     hasBin: true
     dev: true
 
-  registry.npmmirror.com/plasmo/0.44.0:
-    resolution: {integrity: sha512-uIvVjCYSY+cDd2T/RXnwkmYj4fAAfkxuDnPlhEimY9R8EqJZx6230n3rfamcQq5Md72mR6+BqR9hmj/EpVFMeQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/plasmo/-/plasmo-0.44.0.tgz}
+  registry.npmmirror.com/plasmo/0.45.1:
+    resolution: {integrity: sha512-TdU148HItGU4xK/araCuH7oO2fOxPYN1tJsmE6Et4bRKI2y7/wkfvVleOlNK67lEeHDmY0TXz3UA4+H2mpcxzA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/plasmo/-/plasmo-0.45.1.tgz}
     name: plasmo
-    version: 0.44.0
+    version: 0.45.1
     hasBin: true
     dependencies:
       '@expo/spawn-async': registry.npmmirror.com/@expo/spawn-async/1.6.0
@@ -5022,6 +5047,7 @@ packages:
       node-object-hash: registry.npmmirror.com/node-object-hash/2.3.10
       process: registry.npmmirror.com/process/0.11.10
       semver: registry.npmmirror.com/semver/7.3.7
+      tiny-glob: registry.npmmirror.com/tiny-glob/0.2.9
       typescript: registry.npmmirror.com/typescript/4.7.4
     transitivePeerDependencies:
       - cssnano
@@ -5754,6 +5780,15 @@ packages:
     resolution: {integrity: sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/timsort/-/timsort-0.3.0.tgz}
     name: timsort
     version: 0.3.0
+    dev: false
+
+  registry.npmmirror.com/tiny-glob/0.2.9:
+    resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tiny-glob/-/tiny-glob-0.2.9.tgz}
+    name: tiny-glob
+    version: 0.2.9
+    dependencies:
+      globalyzer: registry.npmmirror.com/globalyzer/0.1.0
+      globrex: registry.npmmirror.com/globrex/0.1.2
     dev: false
 
   registry.npmmirror.com/tmp/0.0.33:
