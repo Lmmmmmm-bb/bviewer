@@ -5,7 +5,7 @@ import { useFetchType } from '~hooks';
 import type { FetchType } from '~types';
 import { queryCurrentTab } from '~utils';
 import { matchBvidReg, matchUidReg } from './config';
-import { fetchBUpInfo, fetchBVideoInfo } from './fetch';
+import { fetchBUpBackgroundInfo, fetchBVideoInfo } from './fetch';
 import './index.css';
 
 const BiliBili: FC = () => {
@@ -23,7 +23,7 @@ const BiliBili: FC = () => {
       fetchSrc = await fetchBVideoInfo(match.groups.bvid);
     } else if (type === 'cover') {
       const match = current.url.match(matchUidReg);
-      fetchSrc = await fetchBUpInfo(match.groups.uid);
+      fetchSrc = await fetchBUpBackgroundInfo(match.groups.uid);
     }
 
     setImageSrc(fetchSrc);
