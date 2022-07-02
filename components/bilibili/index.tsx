@@ -42,12 +42,11 @@ const BiliBili: FC = () => {
         </a>
       )}
       <div className={styles.btnWrapper}>
-        {fetchType === 'cover' ? (
+        {fetchType === 'cover' && (
           <UpCoverButton onClick={() => handleFetch('cover')} />
-        ) : fetchType === 'preview' ? (
+        )}
+        {fetchType === 'preview' && (
           <PreviewButton onClick={() => handleFetch('preview')} />
-        ) : (
-          <button className='basic-btn'>插件不可用</button>
         )}
       </div>
     </div>

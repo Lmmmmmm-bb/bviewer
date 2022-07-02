@@ -1,6 +1,6 @@
-import { B_API_PREFIX } from '~layouts/bilibili/config';
+import { B_API_PREFIX } from '~components/bilibili/config';
 
-export { matchUidReg } from '~layouts/bilibili/config';
+export { matchUidReg } from '~components/bilibili/config';
 
 export const B_API_SPACE = `${B_API_PREFIX}/space/arc/search`;
 
