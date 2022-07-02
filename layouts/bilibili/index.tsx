@@ -2,9 +2,10 @@ import { FC, useState } from 'react';
 import PreviewButton from '~components/preview-button';
 import UpCoverButton from '~components/up-cover-button';
 import { useFetchType } from '~hooks';
-import { FetchType, matchBvidReg, matchUidReg } from './config';
+import type { FetchType } from '~types';
+import { queryCurrentTab } from '~utils';
+import { matchBvidReg, matchUidReg } from './config';
 import { fetchBUpInfo, fetchBVideoInfo } from './fetch';
-import { queryCurrentTab } from './utils';
 import './index.css';
 
 const BiliBili: FC = () => {
