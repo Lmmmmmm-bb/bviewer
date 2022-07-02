@@ -3,6 +3,11 @@ import { useStorage } from '@plasmohq/storage';
 import type { IUpInfo } from '~types/space-video';
 import { FOLLOW_X_KEY } from '~layouts/follow/config';
 import styles from './index.module.scss';
+import {
+  ContextMenu,
+  ContextMenuItem,
+  ContextMenuTrigger
+} from 'rctx-contextmenu';
 
 interface UpAvatarProps {
   up: IUpInfo;
@@ -26,19 +31,27 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
   };
 
   return (
-    <div className={styles.wrapper} title={`访问 ${up.name}`}>
-      <div className={styles.innerWrapper} onClick={handleVisitUp}>
-        <img className={styles.avatar} src={up.face} alt='up avatar' />
-        <p className={styles.upName}>{up.name}</p>
+    <ContextMenuTrigger id={up.mid.toString()}>
+      <div className={styles.wrapper} title={`访问 ${up.name}`}>
+        <div className={styles.innerWrapper} onClick={handleVisitUp}>
+          <img className={styles.avatar} src={up.face} alt='up avatar' />
+          <p className={styles.upName}>{up.name}</p>
+        </div>
       </div>
-      <button
-        className={`basic-btn ${styles.remove}`}
-        title={`删除 ${up.name}`}
-        onClick={handleRemoveUp}
+      <ContextMenu
+        id={up.mid.toString()}
+        className={styles.contextMenu}
+        appendTo='body'
+        animation='fade'
       >
-        删除
-      </button>
-    </div>
+        <ContextMenuItem
+          onClick={handleRemoveUp}
+          attributes={{ title: `删除 ${up.name}` }}
+        >
+          删除
+        </ContextMenuItem>
+      </ContextMenu>
+    </ContextMenuTrigger>
   );
 };
 
