@@ -1,8 +1,8 @@
-import type { FC, MouseEvent } from 'react';
+import type { FC } from 'react';
 import { useStorage } from '@plasmohq/storage';
 import type { IUpInfo } from '~types/space-video';
-import './index.css';
 import { FOLLOW_X_KEY } from '~layouts/follow/config';
+import styles from './index.module.scss';
 
 interface UpAvatarProps {
   up: IUpInfo;
@@ -26,13 +26,13 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
   };
 
   return (
-    <div className='up-avatar-wrapper' title={`访问 ${up.name}`}>
-      <div className='up-avatar-inner-wrapper' onClick={handleVisitUp}>
-        <img className='avatar' src={up.face} alt='up avatar' />
-        <p className='up-name'>{up.name}</p>
+    <div className={styles.wrapper} title={`访问 ${up.name}`}>
+      <div className={styles.innerWrapper} onClick={handleVisitUp}>
+        <img className={styles.avatar} src={up.face} alt='up avatar' />
+        <p className={styles.upName}>{up.name}</p>
       </div>
       <button
-        className='basic-btn up-avatar-remove'
+        className={`basic-btn ${styles.remove}`}
         title={`删除 ${up.name}`}
         onClick={handleRemoveUp}
       >

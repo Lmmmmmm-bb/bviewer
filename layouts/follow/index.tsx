@@ -5,7 +5,7 @@ import type { IUpInfo } from '~types/space-video';
 import { uniqByKey } from '~utils';
 import { FOLLOW_X_KEY } from './config';
 import { fetchUpInfo } from './fetch';
-import './index.css';
+import styles from './index.module.scss';
 
 const Follow: FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -26,10 +26,10 @@ const Follow: FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <input
         ref={inputRef}
-        className='uid-input'
+        className={styles.uidInput}
         type='number'
         placeholder='通过 UID 添加'
         title='按 Enter 添加'
@@ -39,7 +39,7 @@ const Follow: FC = () => {
       {follow.map((up) => (
         <UpAvatar key={up.mid} up={up} />
       ))}
-    </>
+    </div>
   );
 };
 

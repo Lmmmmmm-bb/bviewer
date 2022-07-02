@@ -1,0 +1,13 @@
+@use '../../popup/variables' as v;
+
+.upBtn {
+  color: v.$primary-color;
+  background-color: v.$secondary-color;
+  box-shadow: 0 4px 4px #00000014;
+  &:hover {
+    background-color: v.$secondary-btn-hover-color;
+  }
+  &:active {
+    background-color: v.$secondary-btn-active-color;
+  }
+}

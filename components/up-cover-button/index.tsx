@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import './index.css';
+import styles from './index.module.scss';
 
 interface IUpCoverButtonProps {
   onClick: () => void;
@@ -7,7 +7,7 @@ interface IUpCoverButtonProps {
 
 const UpCoverButton: FC<IUpCoverButtonProps> = (props) => {
   return (
-    <button className='basic-btn up-btn' {...props}>
+    <button className={`basic-btn ${styles.upBtn}`} {...props}>
       获取当前 UP 背景
     </button>
   );
