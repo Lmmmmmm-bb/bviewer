@@ -1,11 +1,12 @@
 import type { FC } from 'react';
 import { useStorage } from '@plasmohq/storage';
+import { Link } from 'react-router-dom';
 import {
   ContextMenu,
   ContextMenuItem,
   ContextMenuTrigger
 } from 'rctx-contextmenu';
-import type { IUpInfo } from '~types/space-video';
+import type { IUpInfo } from '~types';
 import { FOLLOW_X_KEY } from '~layouts/follow/config';
 import styles from './index.module.scss';
 
@@ -32,12 +33,12 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
 
   return (
     <ContextMenuTrigger id={up.mid.toString()}>
-      <div className={styles.wrapper} title={up.name}>
+      <Link to={`/up/${up.mid}`} className={styles.wrapper} title={up.name}>
         <div className={styles.innerWrapper}>
           <img className={styles.avatar} src={up.face} alt='up avatar' />
           <p className={styles.upName}>{up.name}</p>
         </div>
-      </div>
+      </Link>
       <ContextMenu
         id={up.mid.toString()}
         className={styles.contextMenu}
