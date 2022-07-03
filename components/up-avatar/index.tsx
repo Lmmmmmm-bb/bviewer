@@ -1,13 +1,13 @@
 import type { FC } from 'react';
 import { useStorage } from '@plasmohq/storage';
-import type { IUpInfo } from '~types/space-video';
-import { FOLLOW_X_KEY } from '~layouts/follow/config';
-import styles from './index.module.scss';
 import {
   ContextMenu,
   ContextMenuItem,
   ContextMenuTrigger
 } from 'rctx-contextmenu';
+import type { IUpInfo } from '~types/space-video';
+import { FOLLOW_X_KEY } from '~layouts/follow/config';
+import styles from './index.module.scss';
 
 interface UpAvatarProps {
   up: IUpInfo;
@@ -32,8 +32,8 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
 
   return (
     <ContextMenuTrigger id={up.mid.toString()}>
-      <div className={styles.wrapper} title={`访问 ${up.name}`}>
-        <div className={styles.innerWrapper} onClick={handleVisitUp}>
+      <div className={styles.wrapper} title={up.name}>
+        <div className={styles.innerWrapper}>
           <img className={styles.avatar} src={up.face} alt='up avatar' />
           <p className={styles.upName}>{up.name}</p>
         </div>
@@ -45,8 +45,14 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
         animation='fade'
       >
         <ContextMenuItem
-          onClick={handleRemoveUp}
+          attributes={{ title: `访问 ${up.name} 主页` }}
+          onClick={handleVisitUp}
+        >
+          {`访问 ${up.name}`}
+        </ContextMenuItem>
+        <ContextMenuItem
           attributes={{ title: `删除 ${up.name}` }}
+          onClick={handleRemoveUp}
         >
           删除
         </ContextMenuItem>
