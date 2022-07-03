@@ -1,9 +1,31 @@
+@use '../../popup/variables' as v;
+
 .wrapper {
   width: 400px;
   display: flex;
   flex-direction: column;
   padding: 16px;
   user-select: none;
+
+  .noData {
+    width: 100%;
+    &::after {
+      height: 450px;
+      display: block;
+      content: '空间主人还没有投过视频哦~~';
+      font-size: 14px;
+      color: v.$secondary-text-color;
+      border-radius: 4px;
+      background: {
+        position: 50%;
+        repeat: no-repeat;
+        image: url('../../assets/nodata.png');
+      }
+      overflow: hidden;
+      line-height: 640px;
+      text-align: center;
+    }
+  }
 
   .videoWrapper {
     display: grid;

@@ -4,6 +4,7 @@ import VideoCard from '~components/video-card';
 import type { IBSpaceQuery, ISpaceVideo } from '~types';
 import { fetchBSpaceVideo } from './fetch';
 import styles from './index.module.scss';
+import NoData from '~assets/nodata.png';
 
 const UpSpace: FC = () => {
   const { uid } = useParams<{ uid: string }>();
@@ -20,11 +21,15 @@ const UpSpace: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.videoWrapper}>
-        {videoList.map((video) => (
-          <VideoCard video={video} />
-        ))}
-      </div>
+      {videoList.length === 0 ? (
+        <div className={styles.noData} />
+      ) : (
+        <div className={styles.videoWrapper}>
+          {videoList.map((video) => (
+            <VideoCard video={video} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
