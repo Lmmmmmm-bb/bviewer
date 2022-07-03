@@ -22,9 +22,7 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
   );
 
   const handleVisitUp = () => {
-    chrome.tabs.create({
-      url: `https://space.bilibili.com/${up.mid}`
-    });
+    chrome.tabs.create({ url: `https://space.bilibili.com/${up.mid}` });
   };
 
   const handleRemoveUp = () => {
@@ -33,7 +31,12 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
 
   return (
     <ContextMenuTrigger id={up.mid.toString()}>
-      <Link to={`/up/${up.mid}`} className={styles.wrapper} title={up.name}>
+      <Link
+        to={`/up/${up.mid}`}
+        state={{ up }}
+        className={styles.wrapper}
+        title={up.name}
+      >
         <div className={styles.innerWrapper}>
           <img className={styles.avatar} src={up.face} alt='up avatar' />
           <p className={styles.upName}>{up.name}</p>
