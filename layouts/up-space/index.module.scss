@@ -1,0 +1,39 @@
+@use '../../popup/variables' as v;
+
+.wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  user-select: none;
+
+  .noData {
+    width: 100%;
+    &::after {
+      height: 450px;
+      display: block;
+      content: '空间主人还没有投过视频哦~~';
+      font-size: 14px;
+      color: v.$secondary-text-color;
+      border-radius: 4px;
+      background: {
+        position: 50%;
+        repeat: no-repeat;
+        image: url('../../assets/nodata.png');
+      }
+      overflow: hidden;
+      line-height: 640px;
+      text-align: center;
+    }
+  }
+
+  .videoWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 8px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+}

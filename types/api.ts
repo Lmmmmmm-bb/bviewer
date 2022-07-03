@@ -8,5 +8,6 @@ export interface IBUpInfoQuery {
 
 export interface IBSpaceQuery {
   mid: string;
-  ps: string;
+  pn: number;
+  ps?: number;
 }

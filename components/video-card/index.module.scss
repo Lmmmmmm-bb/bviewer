@@ -1,0 +1,44 @@
+@use '../../popup/variables' as v;
+
+.wrapper {
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #f5f5f5;
+    .title {
+      color: v.$primary-color;
+    }
+  }
+
+  .preview {
+    width: 90%;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  .title {
+    width: 160px;
+    margin: 0;
+    font: {
+      size: 14px;
+      weight: 600;
+    }
+    text: {
+      align: center;
+      overflow: ellipsis;
+    }
+    color: v.$secondary-text-color;
+    letter-spacing: 0.4px;
+    transition: color 0.2s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

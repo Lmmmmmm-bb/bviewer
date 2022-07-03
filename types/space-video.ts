@@ -4,6 +4,7 @@ export interface ISpaceVideo {
   pic: string;
   length: string;
   title: string;
+  play: number;
 }
 
 export interface IUpInfo {
