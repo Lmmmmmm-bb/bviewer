@@ -1,0 +1,37 @@
+@use '../../popup/variables' as v;
+
+.wrapper {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 6px;
+    font: {
+      size: 12px;
+      weight: 500;
+    }
+    border: 1px solid #e0e6ec {
+      radius: 4px;
+    }
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
+
+    &:hover {
+      color: v.$primary-input-color;
+      border: 1px solid v.$primary-input-color;
+    }
+  }
+
+  .left {
+    margin-right: 12px;
+  }
+
+  .right {
+    margin-left: 12px;
+  }
+}
