@@ -24,12 +24,12 @@ const UpSpaceNavigate: FC<UpSpaceNavigateProps> = (props) => {
         title={`访问 ${up.name} 主页`}
         onClick={handleVisitUp}
       >
+        <p>{up.name}</p>
         <img
           className={styles.avatar}
           src={up.face}
           alt={`${up.name} 的头像`}
         />
-        <p>{up.name}</p>
       </div>
     </div>
   );
