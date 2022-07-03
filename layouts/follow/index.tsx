@@ -3,7 +3,7 @@ import { FC, KeyboardEvent, useRef } from 'react';
 import UpAvatar from '~components/up-avatar';
 import { useFetchType } from '~hooks';
 import BiliBili from '~components/bilibili';
-import type { IUpInfo } from '~types/space-video';
+import type { IUpInfo } from '~types';
 import { uniqByKey } from '~utils';
 import { FOLLOW_X_KEY } from './config';
 import { fetchUpInfo } from './fetch';
