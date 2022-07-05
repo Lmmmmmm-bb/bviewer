@@ -16,11 +16,11 @@ export async function queryCurrentTab() {
   return current;
 }
 
-export async function biliParser<T = Record<string, string>>(
+export async function biliParser<T = Record<string, string>, R = any>(
   origin: string,
   query: T,
   field?: string
-) {
+): Promise<R> {
   const url = concatUrlQuery(origin, query);
   const { data } = await fetchGet(url);
 
