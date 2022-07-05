@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import VideoPreview from '~components/video-preview';
 import type { ISpaceVideo } from '~types';
 import styles from './index.module.scss';
 
@@ -19,7 +20,7 @@ const VideoCard: FC<IVideoCardProps> = (props) => {
       title={video.title}
       onClick={handlePlayVideo}
     >
-      <img className={styles.preview} src={video.pic} alt='视频封面' />
+      <VideoPreview cover={video.pic} {...video} />
       <p className={styles.title}>{video.title}</p>
     </div>
   );

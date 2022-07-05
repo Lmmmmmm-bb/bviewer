@@ -11,3 +11,8 @@ export interface IBSpaceQuery {
   pn: number;
   ps?: number;
 }
+
+export interface IBVideoShotQuery {
+  bvid: string;
+  index: number;
+}
