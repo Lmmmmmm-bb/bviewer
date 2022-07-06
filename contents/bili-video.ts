@@ -1,9 +1,8 @@
 import { Storage } from '@plasmohq/storage';
 import type { PlasmoContentScript } from 'plasmo';
-import { B_API_VIDEO_INFO, matchBvidReg } from '~components/bilibili/config';
+import { matchBvidReg } from '~components/bilibili/config';
 import { FOLLOW_X_KEY } from '~layouts/follow/config';
-import type { IBVideoInfoQuery, IUpInfo } from '~types';
-import { biliParser, uniqByKey } from '~utils';
+import { fetchVideoInfo, uniqByKey } from '~utils';
 
 export const config: PlasmoContentScript = {
   matches: ['https://www.bilibili.com/video/*']
@@ -20,12 +19,8 @@ const initPreviewEl = (el: Element) => {
 
   fetchPreviewEl.addEventListener('click', async () => {
     const { bvid } = window.location.href.match(matchBvidReg).groups;
-    const preview = await biliParser<IBVideoInfoQuery, string>(
-      B_API_VIDEO_INFO,
-      { bvid },
-      'pic'
-    );
-    preview && window.open(preview);
+    const { pic } = await fetchVideoInfo(bvid);
+    pic && window.open(pic);
   });
 };
 
@@ -38,18 +33,14 @@ const initUpFollowEl = (el: Element) => {
 
   fetchUpEl.addEventListener('click', async () => {
     const { bvid } = window.location.href.match(matchBvidReg).groups;
-    const up = await biliParser<IBVideoInfoQuery, IUpInfo>(
-      B_API_VIDEO_INFO,
-      { bvid },
-      'owner'
-    );
+    const { owner } = await fetchVideoInfo(bvid);
 
     const origin = await storage.get(FOLLOW_X_KEY);
     origin
-      ? storage.set(FOLLOW_X_KEY, uniqByKey([...origin, up], 'mid'))
-      : storage.set(FOLLOW_X_KEY, [up]);
+      ? storage.set(FOLLOW_X_KEY, uniqByKey([...origin, owner], 'mid'))
+      : storage.set(FOLLOW_X_KEY, [owner]);
 
-    fetchUpEl.innerHTML = `已添加 ${up.name}`;
+    fetchUpEl.innerHTML = `已添加 ${owner.name}`;
     setTimeout(() => {
       fetchUpEl.remove();
     }, 3000);

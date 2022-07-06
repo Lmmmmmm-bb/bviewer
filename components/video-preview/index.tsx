@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useMemo, useRef, useState } from 'react';
-import { fetchBVideoShot } from './fetch';
+import { fetchVideoShot } from '~utils';
 import styles from './index.module.scss';
 
 interface IVideoPreviewProps {
@@ -28,7 +28,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
   );
 
   const handleFetchShot = async () => {
-    const { image, index } = await fetchBVideoShot(bvid);
+    const { image, index } = await fetchVideoShot(bvid);
 
     const range = [];
     const count = Math.min(index.length, 10);

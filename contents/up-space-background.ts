@@ -1,7 +1,6 @@
 import type { PlasmoContentScript } from 'plasmo';
-import { B_API_UP_INFO, matchUidReg } from '~components/bilibili/config';
-import type { IBUpInfoQuery } from '~types';
-import { biliParser } from '~utils';
+import { matchUidReg } from '~components/bilibili/config';
+import { fetchUpInfo } from '~utils';
 
 export const config: PlasmoContentScript = {
   matches: ['https://space.bilibili.com/*']
@@ -22,11 +21,7 @@ window.addEventListener('load', () => {
     fetchBackgroundEl.addEventListener('click', async () => {
       const uid = window.location.href.match(matchUidReg).groups.uid;
 
-      const topPhoto = await biliParser<IBUpInfoQuery, string>(
-        B_API_UP_INFO,
-        { mid: uid },
-        'top_photo'
-      );
+      const { top_photo: topPhoto } = await fetchUpInfo(uid);
       topPhoto && window.open(topPhoto);
     });
   }

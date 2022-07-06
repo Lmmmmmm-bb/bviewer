@@ -1,12 +1,11 @@
-import { useStorage } from '@plasmohq/storage';
 import { FC, KeyboardEvent, useRef } from 'react';
-import UpAvatar from '~components/up-avatar';
+import { useStorage } from '@plasmohq/storage';
 import { useFetchType } from '~hooks';
-import BiliBili from '~components/bilibili';
 import type { IUpInfo } from '~types';
-import { uniqByKey } from '~utils';
+import { uniqByKey, fetchUpInfo } from '~utils';
+import UpAvatar from '~components/up-avatar';
+import BiliBili from '~components/bilibili';
 import { FOLLOW_X_KEY } from './config';
-import { fetchUpInfo } from './fetch';
 import styles from './index.module.scss';
 
 const Follow: FC = () => {
