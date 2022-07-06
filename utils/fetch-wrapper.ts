@@ -1,20 +1,4 @@
-export function concatUrlQuery<T = Record<string, string>>(
-  url: string,
-  query: T
-) {
-  const queryStr = Object.entries(query)
-    .map(([key, value]) => `${key}=${value}`)
-    .join('&');
-  return `${url}?${queryStr}`;
-}
-
-export async function queryCurrentTab() {
-  const [current] = await chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  });
-  return current;
-}
+import { concatUrlQuery } from '.';
 
 export async function biliParser<T = Record<string, string>, R = any>(
   origin: string,

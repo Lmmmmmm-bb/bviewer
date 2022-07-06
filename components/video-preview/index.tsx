@@ -1,7 +1,5 @@
 import { FC, MouseEvent, useMemo, useRef, useState } from 'react';
-import { B_API_VIDEOSHOT } from '~components/video-card/config';
-import type { IBVideoShotQuery } from '~types';
-import { biliParser } from '~utils';
+import { fetchBVideoShot } from './fetch';
 import styles from './index.module.scss';
 
 interface IVideoPreviewProps {
@@ -30,10 +28,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
   );
 
   const handleFetchShot = async () => {
-    const { image, index } = await biliParser<IBVideoShotQuery>(
-      B_API_VIDEOSHOT,
-      { bvid, index: 1 }
-    );
+    const { image, index } = await fetchBVideoShot(bvid);
 
     const range = [];
     const count = Math.min(index.length, 10);
