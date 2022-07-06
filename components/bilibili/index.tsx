@@ -3,9 +3,8 @@ import PreviewButton from '~components/preview-button';
 import UpCoverButton from '~components/up-cover-button';
 import { useFetchType } from '~hooks';
 import type { FetchType } from '~types';
-import { queryCurrentTab } from '~utils';
+import { fetchUpInfo, fetchVideoInfo, queryCurrentTab } from '~utils';
 import { matchBvidReg, matchUidReg } from './config';
-import { fetchBUpBackgroundInfo, fetchBVideoInfo } from './fetch';
 import styles from './index.module.scss';
 
 const BiliBili: FC = () => {
@@ -20,10 +19,12 @@ const BiliBili: FC = () => {
 
     if (type === 'preview') {
       const match = current.url.match(matchBvidReg);
-      fetchSrc = await fetchBVideoInfo(match.groups.bvid);
+      const { pic } = await fetchVideoInfo(match.groups.bvid);
+      fetchSrc = pic;
     } else if (type === 'cover') {
       const match = current.url.match(matchUidReg);
-      fetchSrc = await fetchBUpBackgroundInfo(match.groups.uid);
+      const { top_photo } = await fetchUpInfo(match.groups.uid);
+      fetchSrc = top_photo;
     }
 
     setImageSrc(fetchSrc);

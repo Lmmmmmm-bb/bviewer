@@ -1,4 +1,4 @@
-import type { ISpaceVideo } from '.';
+import type { ISpaceVideo, IUpInfo } from '.';
 
 export interface IBUpInfoResponse {
   mid: number;
@@ -21,4 +21,13 @@ export interface IBSpaceResponse {
 export interface IBVideoShotResponse {
   image: string[];
   index: number[];
+}
+
+export interface IBVideoInfoResponse {
+  aid: number;
+  bvid: string;
+  desc: string;
+  owner: IUpInfo;
+  pic: string;
+  title: string;
 }

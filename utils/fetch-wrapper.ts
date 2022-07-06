@@ -3,7 +3,7 @@ import { concatUrlQuery } from '.';
 export async function biliParser<T = Record<string, string>, R = any>(
   origin: string,
   query: T,
-  field?: string
+  field?: keyof R
 ): Promise<R> {
   const url = concatUrlQuery(origin, query);
   const { data } = await fetchGet(url);

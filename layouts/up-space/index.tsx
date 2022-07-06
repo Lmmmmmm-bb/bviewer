@@ -4,7 +4,7 @@ import VideoCard from '~components/video-card';
 import UpSpaceNavigate from '~components/up-space-navigate';
 import UpSpacePagination from '~components/up-space-pagination';
 import type { IBSpaceQuery, ISpaceVideo, IUpInfo } from '~types';
-import { fetchBSpaceVideo } from './fetch';
+import { fetchUpSpaceInfo } from '~utils';
 import styles from './index.module.scss';
 
 const UpSpace: FC = () => {
@@ -17,7 +17,7 @@ const UpSpace: FC = () => {
     const {
       list: { vlist },
       page: { count }
-    } = await fetchBSpaceVideo({ mid: uid, ...query });
+    } = await fetchUpSpaceInfo({ mid: uid, ...query });
     setVideoList(vlist);
     setTotalVideo(count);
   };
