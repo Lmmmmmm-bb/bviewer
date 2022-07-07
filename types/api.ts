@@ -16,3 +16,7 @@ export interface IBVideoShotQuery {
   bvid: string;
   index: number;
 }
+
+export interface IBBulletChatQuery {
+  aid: string;
+}
