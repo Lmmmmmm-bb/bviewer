@@ -31,3 +31,5 @@ export interface IBVideoInfoResponse {
   pic: string;
   title: string;
 }
+
+export type IBBulletChatResponse = string[];

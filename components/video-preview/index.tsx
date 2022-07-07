@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useMemo, useRef, useState } from 'react';
-import { fetchVideoShot } from '~utils';
+import { fetchVideoShot, fetchBulletChatShot } from '~utils';
 import styles from './index.module.scss';
 
 interface IVideoPreviewProps {
@@ -17,7 +17,15 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
   const timer = useRef<NodeJS.Timeout | null>(null);
   const [ratio, setRatio] = useState(0);
   const [isMouseIn, setIsMouseIn] = useState(false);
-  const [shotConfig, setShotConfig] = useState({ preview: '', range: [] });
+  const [shotConfig, setShotConfig] = useState<{
+    preview: string;
+    range: number[];
+    bulletChat: { text: string; width: number }[];
+  }>({
+    preview: '',
+    range: [],
+    bulletChat: []
+  });
   const isPreviewShow = useMemo(
     () => shotConfig.preview && isMouseIn,
     [shotConfig.preview, isMouseIn]
@@ -29,6 +37,18 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
 
   const handleFetchShot = async () => {
     const { image, index } = await fetchVideoShot(bvid);
+    const bc = await fetchBulletChatShot(bvid);
+
+    const bulletChat = [];
+    bc.forEach((item) => {
+      const el = document.createElement('div');
+      el.innerText = item;
+      el.style.opacity = '0';
+      el.style.position = 'absolute';
+      document.body.appendChild(el);
+      bulletChat.push({ text: item, width: el.offsetWidth });
+      el.remove();
+    });
 
     const range = [];
     const count = Math.min(index.length, 10);
@@ -36,7 +56,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
     for (let i = 0; i < count; i++) {
       range.push(i * Math.round(100 / count));
     }
-    setShotConfig({ range, preview: image[0] });
+    setShotConfig({ range, preview: image[0], bulletChat });
   };
 
   const handleMouseEnter = () => {
@@ -81,7 +101,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
           <div
             className={styles.preview}
             style={{
-              backgroundImage: `url(https://${shotConfig.preview})`,
+              backgroundImage: `url(https:${shotConfig.preview})`,
               backgroundPosition: `${(previewPosition - 1) * LENGTH}px 12px`
             }}
           />
@@ -93,6 +113,28 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
           </div>
         </>
       )}
+      <div className={styles.fakeBulletChatWrapper}>
+        {shotConfig.bulletChat.map(({ text, width }, index) => {
+          const isOdd = index % 2 === 0;
+          return (
+            <div
+              key={index}
+              className={styles.fakeBulletChatItem}
+              style={
+                isPreviewShow
+                  ? {
+                      top: isOdd ? 8 : 25,
+                      transition: `transform 5s linear ${index * 1.25}s`,
+                      transform: `translateX(-${width + 190}px)`
+                    }
+                  : {}
+              }
+            >
+              {text}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
