@@ -96,23 +96,20 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
       />
       <span className={styles.length}>{length}</span>
       <div className={styles.mask} />
-      {isPreviewShow && (
-        <>
-          <div
-            className={styles.preview}
-            style={{
-              backgroundImage: `url(https:${shotConfig.preview})`,
-              backgroundPosition: `${(previewPosition - 1) * LENGTH}px 12px`
-            }}
-          />
-          <div
-            className={styles.progressWrapper}
-            style={{ opacity: isPreviewShow ? 1 : 0 }}
-          >
-            <div className={styles.progress} style={{ width: `${ratio}%` }} />
-          </div>
-        </>
-      )}
+      <div
+        className={styles.preview}
+        style={{
+          opacity: isPreviewShow ? '1' : '0',
+          backgroundImage: `url(https:${shotConfig.preview})`,
+          backgroundPosition: `${(previewPosition - 1) * LENGTH}px 12px`
+        }}
+      />
+      <div
+        className={styles.progressWrapper}
+        style={{ opacity: isPreviewShow ? 1 : 0 }}
+      >
+        <div className={styles.progress} style={{ width: `${ratio}%` }} />
+      </div>
       <div className={styles.fakeBulletChatWrapper}>
         {shotConfig.bulletChat.map(({ text, width }, index) => {
           const isOdd = index % 2 === 0;
