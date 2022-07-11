@@ -1,4 +1,5 @@
 import { FC, MouseEvent, useMemo, useRef, useState } from 'react';
+import HoverDelay from '~components/hover-delay';
 import { fetchVideoShot, fetchBulletChatShot } from '~utils';
 import styles from './index.module.scss';
 
@@ -14,9 +15,9 @@ const LENGTH = -190;
 const VideoPreview: FC<IVideoPreviewProps> = (props) => {
   const { cover, title, length, bvid } = props;
   const coverRef = useRef<HTMLImageElement | null>(null);
-  const timer = useRef<NodeJS.Timeout | null>(null);
   const [ratio, setRatio] = useState(0);
   const [isMouseIn, setIsMouseIn] = useState(false);
+  const [isBulletChatShow, setIsBulletChatShow] = useState(false);
   const [shotConfig, setShotConfig] = useState<{
     preview: string;
     range: number[];
@@ -61,11 +62,6 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
 
   const handleMouseEnter = () => {
     setIsMouseIn(true);
-    if (!shotConfig.preview) {
-      timer.current = setTimeout(() => {
-        handleFetchShot();
-      }, 300);
-    }
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -78,15 +74,17 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
 
   const handleMouseLeave = () => {
     setIsMouseIn(false);
-    timer.current && clearTimeout(timer.current);
+    setIsBulletChatShow(false);
   };
 
   return (
-    <div
+    <HoverDelay
       className={styles.wrapper}
+      delay={300}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseHover={handleFetchShot}
     >
       <img
         ref={coverRef}
@@ -99,7 +97,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
       <div
         className={styles.preview}
         style={{
-          opacity: isPreviewShow ? '1' : '0',
+          opacity: isPreviewShow ? 1 : 0,
           backgroundImage: `url(https:${shotConfig.preview})`,
           backgroundPosition: `${(previewPosition - 1) * LENGTH}px 12px`
         }}
@@ -110,7 +108,11 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
       >
         <div className={styles.progress} style={{ width: `${ratio}%` }} />
       </div>
-      <div className={styles.fakeBulletChatWrapper}>
+      <HoverDelay
+        className={styles.fakeBulletChatWrapper}
+        delay={600}
+        onMouseHover={() => setIsBulletChatShow(true)}
+      >
         {shotConfig.bulletChat.map(({ text, width }, index) => {
           const isOdd = index % 2 === 0;
           return (
@@ -118,7 +120,7 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
               key={index}
               className={styles.fakeBulletChatItem}
               style={
-                isPreviewShow
+                isBulletChatShow
                   ? {
                       top: isOdd ? 8 : 25,
                       transition: `transform 5s linear ${index * 1.25}s`,
@@ -131,8 +133,8 @@ const VideoPreview: FC<IVideoPreviewProps> = (props) => {
             </div>
           );
         })}
-      </div>
-    </div>
+      </HoverDelay>
+    </HoverDelay>
   );
 };
 
