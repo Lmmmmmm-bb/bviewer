@@ -1,5 +1,13 @@
 import { FC, KeyboardEvent, useRef } from 'react';
 import { useStorage } from '@plasmohq/storage';
+import {
+  DndContext,
+  DragEndEvent,
+  MouseSensor,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core';
+import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useFetchType } from '~hooks';
 import type { IUpInfo } from '~types';
 import { uniqByKey, fetchUpInfo } from '~utils';
@@ -15,6 +23,14 @@ const Follow: FC = () => {
     (v) => v || []
   );
   const fetchType = useFetchType();
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        delay: 100,
+        tolerance: 5
+      }
+    })
+  );
 
   const handleFollowUp = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -24,6 +40,16 @@ const Follow: FC = () => {
         setFollow(uniqByKey([...follow, { name, mid, face }], 'mid'));
       }
       inputRef.current && (inputRef.current.value = '');
+    }
+  };
+
+  const handleSort = (e: DragEndEvent) => {
+    const { active, over } = e;
+    if (active.id !== over.id) {
+      const activeIndex = follow.findIndex((v) => v.mid === active.id);
+      const overIndex = follow.findIndex((v) => v.mid === over.id);
+      const update = arrayMove(follow, activeIndex, overIndex);
+      setFollow(update);
     }
   };
 
@@ -39,9 +65,13 @@ const Follow: FC = () => {
         onKeyUp={handleFollowUp}
         autoFocus
       />
-      {follow.map((up) => (
-        <UpAvatar key={up.mid} up={up} />
-      ))}
+      <DndContext onDragEnd={handleSort} sensors={sensors}>
+        <SortableContext items={follow.map((item) => item.mid)}>
+          {follow.map((up) => (
+            <UpAvatar key={up.mid} up={up} />
+          ))}
+        </SortableContext>
+      </DndContext>
     </div>
   );
 };
