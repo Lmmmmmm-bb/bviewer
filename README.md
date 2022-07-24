@@ -17,7 +17,7 @@
 
 使用 Chrome 扩展程序来管理你的 Bilibili 关注列表。
 
-## 特性
+## 功能 | Features
 
 - [x] 获取 Bilibili 视频封面
 - [x] 获取 Up 主页背景图
@@ -27,5 +27,11 @@
 - [x] 获取封面和背景图功能嵌入页面
 - [x] 鼠标视频弹幕预览
 - [x] 支持拖动对关注排序
-- [ ] 支持右键菜单获取封面和背景图
 - [ ] ...
+
+## 安装 | Install
+
+1. 下载最新版本的 [release](https://github.com/Lmmmmmm-bb/BViewer/releases) `BViewer.zip` 压缩包并解压
+2. 打开 [Chrome Extensions](chrome://extensions/)
+3. 右上角开启开发者模式
+4. 点击 **加载已解压的扩展程序** 选择解压后的文件夹
