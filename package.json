@@ -3,7 +3,7 @@
   "displayName": "Bviewer",
   "version": "1.1.0",
   "description": "用于查看 Bilibili 视频封面和 UP 主页背景的 Chrome 扩展程序",
-  "packageManager": "pnpm@7.5.1",
+  "packageManager": "pnpm@7.8.0",
   "author": "_lmmmmmm",
   "license": "MIT",
   "keywords": [
@@ -12,14 +12,14 @@
     "bilibili",
     "plasmo"
   ],
-  "homepage": "https://github.com/Lmmmmmm-bb/BViewer",
+  "homepage": "https://github.com/Lmmmmmm-bb/bviewer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lmmmmmm-bb/BViewer"
+    "url": "git+https://github.com/Lmmmmmm-bb/bviewer"
   },
   "bugs": {
     "email": "lmmmmmm12138@gmail.com",
-    "url": "https://github.com/Lmmmmmm-bb/BViewer/issues"
+    "url": "https://github.com/Lmmmmmm-bb/bviewer/issues"
   },
   "scripts": {
     "dev": "plasmo dev & pnpm style:watch",
