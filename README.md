@@ -8,6 +8,7 @@
 
 <p align="center">
 <a href="https://github.com/Lmmmmmm-bb/bviewer/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Lmmmmmm-bb/bviewer"></a>
+<a href="https://github.com/Lmmmmmm-bb/bviewer/releases"><img alt="GitHub license" src="https://img.shields.io/github/v/release/Lmmmmmm-bb/bviewer"></a>
 <a href="http://commitizen.github.io/cz-cli/"><img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
 <a href="https://github.com/Lmmmmmm-bb/bviewer/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Lmmmmmm-bb/bviewer"></a>
 <a href="https://github.com/Lmmmmmm-bb/bviewer/pulls"><img alt="GitHub pulls" src="https://img.shields.io/badge/PR-Welcome-%2345A2FF"></a>
