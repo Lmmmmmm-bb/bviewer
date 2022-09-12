@@ -10,9 +10,11 @@ const WrapperErrorBoundary = (FunctionComponent: FC) => (
   </ErrorBoundary>
 );
 
-export const Router: FC = () => (
+const _Router: FC = () => (
   <Routes>
-    <Route path='/' element={WrapperErrorBoundary(Follow)} />
-    <Route path='/up/:uid' element={WrapperErrorBoundary(UpSpace)} />
+    <Route path='/' element={<Follow />} />
+    <Route path='/up/:uid' element={<UpSpace />} />
   </Routes>
 );
+
+export const Router = WrapperErrorBoundary(_Router);
