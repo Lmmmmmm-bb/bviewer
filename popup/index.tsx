@@ -4,11 +4,7 @@ import { Router } from '~layouts';
 import './index.scss';
 
 const Popup: FC = () => {
-  return (
-    <MemoryRouter>
-      <Router />
-    </MemoryRouter>
-  );
+  return <MemoryRouter>{Router}</MemoryRouter>;
 };
 
 export default Popup;
