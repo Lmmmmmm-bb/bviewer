@@ -54,12 +54,7 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
   };
 
   const renderContextItem = (
-    <ContextMenu
-      id={up.mid.toString()}
-      className={styles.contextMenu}
-      appendTo='body'
-      animation='fade'
-    >
+    <ContextMenu id={up.mid.toString()} appendTo='body' animation='fade'>
       <ContextMenuItem
         attributes={{ title: `访问 ${up.name} 主页` }}
         onClick={handleVisitUp}
