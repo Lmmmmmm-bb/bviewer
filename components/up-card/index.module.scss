@@ -1,0 +1,52 @@
+.wrapper {
+  padding: 4px 12px;
+  display: flex;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  .avatar {
+    margin-right: 8px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #e5e5e5 {
+      radius: 50%;
+    }
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  }
+
+  .contentWrapper {
+    height: 38px;
+
+    .section {
+      margin: 0;
+      width: 120px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .name {
+      font: {
+        size: 14px;
+        weight: 500;
+      }
+    }
+
+    .sign {
+      color: #1c1f239f;
+      font: {
+        size: 12px;
+        weight: 300;
+      }
+    }
+  }
+}
+
+.select {
+  background-color: #f5f5f5;
+}

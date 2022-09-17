@@ -1,5 +1,3 @@
-import { FC, KeyboardEvent, useRef } from 'react';
-import { useStorage } from '@plasmohq/storage';
 import {
   DndContext,
   DragEndEvent,
@@ -7,12 +5,16 @@ import {
   useSensor,
   useSensors
 } from '@dnd-kit/core';
+import { useStorage } from '@plasmohq/storage';
+import { FC, KeyboardEvent, useRef } from 'react';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
+
 import { useFetchType } from '~hooks';
 import type { IUpInfo } from '~types';
-import { uniqByKey, fetchUpInfo } from '~utils';
-import UpAvatar from '~components/up-avatar';
 import BiliBili from '~components/bilibili';
+import UpAvatar from '~components/up-avatar';
+import { uniqByKey, fetchUpInfo } from '~utils';
+
 import { FOLLOW_X_KEY } from './config';
 import styles from './index.module.scss';
 

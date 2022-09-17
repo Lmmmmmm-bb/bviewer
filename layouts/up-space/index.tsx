@@ -1,10 +1,13 @@
 import { FC, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+
+import Empty from '~components/empty';
+import { fetchUpSpaceInfo } from '~utils';
 import VideoCard from '~components/video-card';
 import UpSpaceNavigate from '~components/up-space-navigate';
 import UpSpacePagination from '~components/up-space-pagination';
 import type { IBSpaceQuery, ISpaceVideo, IUpInfo } from '~types';
-import { fetchUpSpaceInfo } from '~utils';
+
 import styles from './index.module.scss';
 
 const UpSpace: FC = () => {
@@ -35,7 +38,7 @@ const UpSpace: FC = () => {
     <div className={styles.wrapper}>
       <UpSpaceNavigate up={(state as { up: IUpInfo }).up} />
       {videoList.length === 0 ? (
-        <div className={styles.noData} />
+        <Empty content='空间主人还没有投过视频哦~~' />
       ) : (
         <div className={styles.videoWrapper}>
           {videoList.map((video) => (

@@ -20,3 +20,8 @@ export interface IBVideoShotQuery {
 export interface IBBulletChatQuery {
   aid: string;
 }
+
+export interface IBUpFollowingQuery {
+  pn: number;
+  vmid: string;
+}

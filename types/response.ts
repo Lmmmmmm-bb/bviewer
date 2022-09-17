@@ -33,3 +33,15 @@ export interface IBVideoInfoResponse {
 }
 
 export type IBBulletChatResponse = string[];
+
+export type FollowingInfoType = {
+  mid: number;
+  face: string;
+  uname: string;
+  sign: string;
+};
+
+export interface IBUpFollowingResponse {
+  list: FollowingInfoType[];
+  total: number;
+}
