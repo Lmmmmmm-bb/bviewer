@@ -1,0 +1,21 @@
+@use '../../popup/variables' as v;
+
+.wrapper {
+  width: 100%;
+  &::after {
+    height: 450px;
+    display: block;
+    content: attr(data-content);
+    font-size: 14px;
+    color: v.$secondary-text-color;
+    border-radius: 4px;
+    background: {
+      position: 50%;
+      repeat: no-repeat;
+      image: url('../../assets/nodata.png');
+    }
+    overflow: hidden;
+    line-height: 640px;
+    text-align: center;
+  }
+}

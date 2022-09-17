@@ -4,6 +4,8 @@ import type {
   IBBulletChatResponse,
   IBSpaceQuery,
   IBSpaceResponse,
+  IBUpFollowingQuery,
+  IBUpFollowingResponse,
   IBUpInfoQuery,
   IBUpInfoResponse,
   IBVideoInfoQuery,
@@ -15,6 +17,7 @@ import type {
 export const B_API_PREFIX = 'https://api.bilibili.com/x';
 export const B_API_SPACE = `${B_API_PREFIX}/space/arc/search`;
 export const B_API_UP_INFO = `${B_API_PREFIX}/space/acc/info`;
+export const B_API_UP_FOLLOWING = `${B_API_PREFIX}/relation/followings`;
 export const B_API_VIDEOSHOT = `${B_API_PREFIX}/player/videoshot`;
 export const B_API_VIDEO_INFO = `${B_API_PREFIX}/web-interface/view`;
 export const B_API_VIDEO_BULLET_CHAT = `${B_API_PREFIX}/v2/dm/ajax`;
@@ -45,3 +48,9 @@ export const fetchBulletChatShot = async (aid: string) =>
   biliParser<IBBulletChatQuery, IBBulletChatResponse>(B_API_VIDEO_BULLET_CHAT, {
     aid
   });
+
+export const fetchUpFollowing = async (query: IBUpFollowingQuery) =>
+  biliParser<IBUpFollowingQuery, IBUpFollowingResponse>(
+    B_API_UP_FOLLOWING,
+    query
+  );

@@ -1,15 +1,17 @@
-import type { FC } from 'react';
-import { useStorage } from '@plasmohq/storage';
-import { useNavigate } from 'react-router-dom';
 import {
   ContextMenu,
   ContextMenuItem,
   ContextMenuTrigger
 } from 'rctx-contextmenu';
-import { useSortable } from '@dnd-kit/sortable';
+import type { FC } from 'react';
 import { CSS } from '@dnd-kit/utilities';
+import { useStorage } from '@plasmohq/storage';
+import { useNavigate } from 'react-router-dom';
+import { useSortable } from '@dnd-kit/sortable';
+
 import type { IUpInfo } from '~types';
 import { FOLLOW_X_KEY } from '~layouts/follow/config';
+
 import styles from './index.module.scss';
 
 interface UpAvatarProps {
@@ -45,6 +47,35 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
     });
   };
 
+  const handleToUpFollowing = () => {
+    navigator(`/following/${up.mid}`, {
+      state: { up }
+    });
+  };
+
+  const renderContextItem = (
+    <ContextMenu id={up.mid.toString()} appendTo='body' animation='fade'>
+      <ContextMenuItem
+        attributes={{ title: `访问 ${up.name} 主页` }}
+        onClick={handleVisitUp}
+      >
+        {`访问 ${up.name}`}
+      </ContextMenuItem>
+      <ContextMenuItem
+        attributes={{ title: `查看 ${up.name} 的关注列表` }}
+        onClick={handleToUpFollowing}
+      >
+        查看关注列表
+      </ContextMenuItem>
+      <ContextMenuItem
+        attributes={{ title: `删除 ${up.name}` }}
+        onClick={handleRemoveUp}
+      >
+        删除
+      </ContextMenuItem>
+    </ContextMenu>
+  );
+
   return (
     <ContextMenuTrigger id={up.mid.toString()}>
       <div
@@ -61,25 +92,7 @@ const UpAvatar: FC<UpAvatarProps> = (props) => {
           <p className={styles.upName}>{up.name}</p>
         </div>
       </div>
-      <ContextMenu
-        id={up.mid.toString()}
-        className={styles.contextMenu}
-        appendTo='body'
-        animation='fade'
-      >
-        <ContextMenuItem
-          attributes={{ title: `访问 ${up.name} 主页` }}
-          onClick={handleVisitUp}
-        >
-          {`访问 ${up.name}`}
-        </ContextMenuItem>
-        <ContextMenuItem
-          attributes={{ title: `删除 ${up.name}` }}
-          onClick={handleRemoveUp}
-        >
-          删除
-        </ContextMenuItem>
-      </ContextMenu>
+      {renderContextItem}
     </ContextMenuTrigger>
   );
 };
