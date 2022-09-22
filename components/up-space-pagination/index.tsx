@@ -3,13 +3,14 @@ import styles from './index.module.scss';
 
 interface IUpSpacePaginationProps {
   total: number;
+  pageSize: number;
   onPrevClick: (page: number) => void;
   onNextClick: (page: number) => void;
 }
 
 const UpSpacePagination: FC<IUpSpacePaginationProps> = (props) => {
-  const { total, onPrevClick, onNextClick } = props;
-  const lastPage = useMemo(() => Math.ceil(total / 10), [total]);
+  const { total, pageSize, onPrevClick, onNextClick } = props;
+  const lastPage = useMemo(() => Math.ceil(total / pageSize), [total]);
   const [current, setCurrent] = useState(1);
 
   const handlePrevClick = () => {

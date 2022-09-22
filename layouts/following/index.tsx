@@ -72,6 +72,7 @@ const Following: FC = () => {
             ))}
           </div>
           <UpSpacePagination
+            pageSize={50}
             total={total}
             onNextClick={() => fetchFollow(page + 1)}
             onPrevClick={() => fetchFollow(page - 1)}
