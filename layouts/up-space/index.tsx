@@ -47,6 +47,7 @@ const UpSpace: FC = () => {
         </div>
       )}
       <UpSpacePagination
+        pageSize={10}
         total={totalVideo}
         onPrevClick={handlePageClick}
         onNextClick={handlePageClick}
