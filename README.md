@@ -38,3 +38,10 @@
 2. 打开 Chrome Extensions
 3. 右上角开启开发者模式
 4. 点击 **加载已解压的扩展程序** 选择解压后的文件夹
+
+## 截图 | Screenshot
+
+<br/>
+<p align="center">
+<img src='./screenshot.png' width="600" />
+</p>
