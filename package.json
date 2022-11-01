@@ -1,9 +1,9 @@
 {
   "name": "bviewer",
-  "displayName": "Bviewer",
+  "displayName": "bviewer",
   "version": "1.2.1",
   "description": "通过 Chrome 扩展程序来管理你的 Bilibili 关注列表",
-  "packageManager": "pnpm@7.11.0",
+  "packageManager": "pnpm@7.13.5",
   "author": "_lmmmmmm",
   "license": "MIT",
   "keywords": [
